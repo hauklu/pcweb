@@ -1,0 +1,110 @@
+@import url('./loginBoxVariable.less');
+
+// loginBox-input组件样式
+.input {
+  position: relative;
+  width: @input_width;
+  height: @input_height;
+  margin: auto;
+  padding: 0 0.3rem 0 0.2rem;
+  box-sizing: border-box;
+  border-radius: @input_borderradius;
+  background-color: @input_color_bg;
+  border: 1px solid @input_border_color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .icon {
+    color: @icon_color;
+    font-size: @icon_fontsize;
+  }
+
+  .left {
+    display: flex;
+    align-items: center;
+
+    .icon {
+      padding-right: .2rem;
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: @input_height * 0.99;
+        background-color: @input_border_color;
+      }
+    }
+
+    input {
+      width: 100%;
+      margin-left: 0.15rem;
+      box-sizing: border-box;
+      background: none;
+      outline: none;
+      border: none;
+      color: @input_color;
+      font-size: @input_fontsize;
+
+      &::-webkit-input-placeholder {
+        color: @input_plac_color;
+        font-size: @input_plac_fontsize;
+      }
+      &:-moz-placeholder {
+        color: @input_plac_color;
+        font-size: @input_plac_fontsize;
+      }
+      &::-moz-placeholder {
+        color: @input_plac_color;
+        font-size: @input_plac_fontsize;
+      }
+      &:-ms-input-placeholder {
+        color: @input_plac_color;
+        font-size: @input_plac_fontsize;
+      }
+    }
+
+    .input-code {
+      width: 100%;
+    }
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+
+    .icon-eye {
+      font-size: @icon_fontsize * .9;
+    }
+
+    .icon-arrow {
+      transform: rotate(90deg);
+      transition: transform .3s;
+    }
+
+    .icon-arrow_ {
+      transform: rotate(-90deg);
+      transition: transform .3s;
+    }
+
+    .code-btn {
+      font-size: @icon_fontsize * .5;
+      white-space: nowrap;
+      color: @code_color;
+    }
+
+    .code-btn_ {
+      color: #ccc;
+    }
+  }
+
+  .history-input {
+    position: absolute;
+    top: @input_height - 0.07rem;
+    left: 0;
+    right: 0;
+  }
+}

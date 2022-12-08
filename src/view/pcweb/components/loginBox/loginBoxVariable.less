@@ -1,0 +1,72 @@
+@import url("../../../public/assets/css/mixins.less");
+
+// login盒子
+@box_width: 8.67rem; // 盒子宽度
+@box_height: 8rem; // 盒子高度
+@box_color_bg: #fdf8e4; // 盒子背景色
+@box_border_radius: 15px; // 盒子-边框角度
+@box_shadow: 0px 0px 8px 3px rgba(255, 255, 255, 0.4); // 盒子-阴影
+.box_color_bg() { // 盒子-背景色
+  background-color: @box_color_bg;
+  // .linear-gradient-bg(rgba(93, 71, 47, .85), rgba(13, 3, 5, .9), bottom);
+}
+
+// 标题
+@title_height: 1.5rem; // 标题-高度
+@title_color: #868585; // 标题-字体颜色
+@title_fontsize: 0.6rem; // 标题-字体大小
+
+// 关闭icon
+@icon_close_color: #868585; // icon-关闭组件-颜色
+@icon_close_color__act: #999; // icon-关闭组件-颜色__active
+@icon_color: #fff; // icon-颜色
+
+// 提交按钮
+@btn_height: 1rem; // 提交按钮-高度
+@btn_color_bg: #3a945e; // 提交按钮背景色
+@btn_color: #fff; // 提交按钮-字体颜色
+@btn_fontsize: 0.4rem; // 提交按钮-字体大小
+@btn_border_radius: 30px; // 提交按钮-边框角度
+@btn_margintop: 0.5rem; // 提交按钮-margintop@title_height: 2rem; // 标题-高度
+.btn_color_bg() { // 提交按钮背景色
+  background-color: @btn_color_bg;
+  // .linear-gradient-bg(#ffc66d, #ffe6bd, right);
+  // .radial-gradient-bg(#2c8b55, #5baa74, 3rem);
+}
+
+// input
+@input_width: 7rem; // input-宽度
+@input_height: 1.1rem; // input-高度
+@input_borderradius: 10px; // input-边框角度
+@input_padding: .2rem; // input-padding
+@input_marginbottom: 0.5rem; // input-marginbottom
+@input_color_bg: #fff; // input-背景色
+@input_color: #acacac; // input-字体颜色
+@input_fontsize: 0.4rem; // input-字体大小
+@input_plac_color: #acacac; // input-placeholder-字体颜色
+@input_plac_fontsize: 0.42rem; // input-placeholder-字体大小
+@code_color: #00abf3;; // 验证码-字体颜色
+@input_border_color: #c3c3c3; // input边框颜色
+
+// input-icon
+@icon_color: #a09f9f; // icon-字体颜色
+@icon_fontsize: 0.6rem; // icon-字体大小
+
+// input-下拉列表
+@pulldown_bg_color: #faabad; // 下拉列表-背景色
+@pulldown_border_color: #faabad; // 下拉列表-边框色
+@pulldown_border_radius: 8px; // 下拉列表-边框角度
+@pulldown_item_number: 4; // 下拉列表-单行-最多显示个数
+@pulldown_item_height: 0.8rem; // 下拉列表-单行-高度
+@pulldown_item_padding: 0.2rem; // 下拉列表-单行-padding
+@pulldown_item_color: #606266; // 下拉列表-单行-字体颜色
+@pulldown_item_fontsize: 0.38rem; // 下拉列表-单行-字体大小
+@pulldown_item_bottom_color: #ccc; // 下拉列表-单行-底部线颜色
+
+// 用户协议
+@agreehint_margintop: 0.5rem; // 协议提示-margintop
+@agreehint_color: #a09f9f; // 协议提示-字体颜色
+@agreehint_fontsize: 0.3125rem; // 协议提示-字体大小
+@agreehint_bold_color: #a09f9f; // 协议提示-强调字体颜色
+@agreehint_bold_color__act: #00abf3; // 协议提示-强调字体颜色__active
+@agree_title_height: 1.32rem; // 协议-标题高度

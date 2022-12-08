@@ -1,0 +1,53 @@
+<template>
+  <div class="pcweb-index">
+    <top-nav />
+    <router-view />
+    <foot />
+  </div>
+</template>
+
+<script>
+import foot from './components/common/footer.vue'
+import topNav from './components/common/topNav.vue'
+
+// 公共组件
+import Vue from 'vue'
+import { pbOverlay, pbDialog, pbTransition } from '@/utils/publicComponents.js'
+Vue.use(pbOverlay).use(pbDialog).use(pbTransition)
+Vue.prototype.$static = require('./assets/js/img.js')
+
+export default {
+  components: {
+    topNav,
+    foot
+  },
+  data() {
+    return {}
+  },
+  created() {
+    this.initBaiduTJ()
+  },
+  mounted() {
+  },
+  methods: {
+    // 初始化加载百度统计
+    initBaiduTJ() {
+      var hm = document.createElement('script')
+      hm.src = 'https://hm.baidu.com/hm.js?daedb193742db7b8d3f904c22e55b50c'
+      var s = document.getElementsByTagName('script')[0]
+      s.parentNode.insertBefore(hm, s)
+    }
+  }
+}
+</script>
+
+<style lang="less">
+@import url('./assets/css/variable.less');
+.pcweb-index {
+  position: relative;
+  width: 100%;
+  max-width: @max_width;
+  min-width: @mini_width;
+  margin: auto;
+}
+</style>

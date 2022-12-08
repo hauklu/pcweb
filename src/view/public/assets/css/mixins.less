@@ -1,0 +1,163 @@
+// 宽高
+.whl(@width, @height, @line-height: @height) {
+  width: @width;
+  height: @height;
+  line-height: @line-height;
+}
+
+// 宽高
+.wh(@width, @height) {
+  width: @width;
+  height: @height;
+}
+
+// 字体大小, 颜色
+.font(@size, @color) {
+  font-size: @size;
+  color: @color;
+}
+
+// 背景图片尺寸, 不重复
+.bg-img(@width: 100%, @height: 100%, @repeat: no-repeat) {
+  background-size: @width @height;
+  background-repeat: @repeat;
+}
+
+// 定位水平垂直居中
+.center {
+	position: absolute;
+	top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// 定位垂直居中
+.center-v {
+	position: absolute;
+	top: 50%;
+  transform: translateY(-50%);
+}
+
+// 定位水平居中
+.center-h {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+// 清除浮动
+.clearfix::after {
+  content: "";
+  visibility: hidden;
+  display: block;
+  clear: both;
+}
+
+// 单行省略
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// 多行省略
+.ellipsis-multiline(@num: 3) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: @num; // 控制行数
+  -webkit-box-orient: vertical;
+}
+
+// 半透明遮罩层
+.module-shade-translucent(@zIndex: 999) {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: @zIndex;
+  background: rgba(0, 0, 0, .6);
+  overflow: hidden;
+}
+
+// 弹出全屏窗口
+.module-window-full(@bc: #fff) {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: @bc;
+  overflow-y: scroll;
+}
+
+// 弹出居中窗口
+.module-window-center(@bc: #fff, @borderRadius: 0) {
+  .center();
+  background: @bc;
+  border-radius: @borderRadius;
+  width: auto;
+  height: auto;
+}
+
+// 普通按钮点击效果
+.btn-click:active::after {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: inherit;
+  background-color: rgba(0, 0, 0, .1);
+}
+
+// 普通按钮鼠标滑过效果
+.btn-hover:hover::after {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: inherit;
+  background-color: rgba(0, 0, 0, .1);
+}
+
+// 左右渐变-背景, @direction: 渐变方向
+.linear-gradient-bg (@s_color: #ccc, @e_color: #fff, @direction: left) {
+  background: @s_color;
+  background: linear-gradient(to @direction, @s_color, @e_color);
+  background: -webkit-linear-gradient(to @direction, @s_color, @e_color);
+  background: -moz-linear-gradient(to @direction, @s_color, @e_color);
+  background: -o-linear-gradient(to @direction, @s_color, @e_color);
+}
+
+// 中间扩散渐变-背景, @sizes: 渐变尺寸
+.radial-gradient-bg (@s_color: #ccc, @e_color: #fff, @size: 2.1rem) {
+  background: @s_color;
+  background: radial-gradient(@size, @s_color 30%, @e_color 100%);
+  background: -webkit-radial-gradient(@size, @s_color 30%, @e_color 100%);
+  background: -moz-radial-gradient(@size, @s_color 30%, @e_color 100%);
+  background: -o-radial-gradient(@size, @s_color 30%, @e_color 100%);
+}
+
+// 线性渐变-字体, @direction: 渐变方向
+.linear-gradient-text (@s_color: #ccc, @e_color: #fff, @direction: left) {
+  .linear-gradient-bg(@s_color, @e_color, @direction);
+  background-clip: text; /* 规定背景的划分区域 */
+  -webkit-background-clip: text;
+  -moz-background-clip:text;
+  -o-background-clip:text;
+  color: transparent;
+  // -webkit-text-fill-color: transparent; /* 防止字体颜色覆盖 */
+}
+
+// seo样式隐藏
+.seo {
+  width: 0px;
+  height: 0px;
+  font-size: 0;
+  opacity: 0;
+}
