@@ -35,21 +35,21 @@ export default {
   data() {
     return {
       list: [{
-        banner: require('@img/home/scene_1.png')
+        banner: require('@img/home/partner_1.png')
       }, {
-        banner: require('@img/home/scene_2.png')
+        banner: require('@img/home/partner_2.png')
       }, {
-        banner: require('@img/home/scene_3.png')
+        banner: require('@img/home/partner_3.png')
       }, {
-        banner: require('@img/home/scene_4.png')
+        banner: require('@img/home/partner_4.png')
       }, {
-        banner: require('@img/home/scene_5.png')
+        banner: require('@img/home/partner_5.png')
       }, {
-        banner: require('@img/home/scene_6.png')
+        banner: require('@img/home/partner_6.png')
       }, {
-        banner: require('@img/home/scene_7.png')
+        banner: require('@img/home/partner_7.png')
       }, {
-        banner: require('@img/home/scene_8.png')
+        banner: require('@img/home/partner_8.png')
       }]
     }
   },
@@ -91,7 +91,7 @@ export default {
         margin-bottom: 24px;
 
         .banner {
-          .scale-img(252px, 144px);
+          .scale-img(252px, 100px);
         }
       }
     }
