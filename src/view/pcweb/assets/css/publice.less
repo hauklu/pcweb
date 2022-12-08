@@ -1,0 +1,59 @@
+.button {
+  width: 100px;
+  height: 50px;
+  background: #368dff;
+  border-radius: 40px;
+  color: #fff;
+  font-size: 16px;
+
+  &:hover {
+    cursor: pointer;
+    color: #368dff !important;
+    background: #fff !important;
+  }
+}
+
+.hover {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.click {
+  &:active {
+    transform: scale(1.05);
+  }
+}
+
+// 毛玻璃样式
+.ground-glass {
+  overflow: hidden;
+
+  .ground-glass-cover-bg {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: 84px;
+    transform: scaleY(-1);
+    background: inherit;
+  }
+
+  .ground-glass-con {
+    position: absolute;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+    -webkit-backdrop-filter: blur(15px);
+    -moz-backdrop-filter: blur(15px);
+    -ms-backdrop-filter: blur(15px);
+    -o-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    background: -webkit-linear-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, .2)), to(rgba(0, 0, 0, .2))), rgba(114, 102, 104, .3);
+    background: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), rgba(114, 102, 104, .3);
+  }
+}

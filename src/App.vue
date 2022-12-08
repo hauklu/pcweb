@@ -25,9 +25,8 @@ export default {
 
 <style lang="less">
 @import url('./assets/css/flexible.less');
-html {
-  // filter: grayscale(100%);
-}
+@import url('./view/pcweb/assets/css/publice.less');
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -25,18 +25,10 @@ export default {
     return {}
   },
   created() {
-    this.initBaiduTJ()
   },
   mounted() {
   },
   methods: {
-    // 初始化加载百度统计
-    initBaiduTJ() {
-      var hm = document.createElement('script')
-      hm.src = 'https://hm.baidu.com/hm.js?daedb193742db7b8d3f904c22e55b50c'
-      var s = document.getElementsByTagName('script')[0]
-      s.parentNode.insertBefore(hm, s)
-    }
   }
 }
 </script>

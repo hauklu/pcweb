@@ -1,24 +1,68 @@
 <template>
   <div class="banner">
-    <div
-      :style="`background-image: url(${$static.home.home_banner_bg});`"
-      class="banner-bg"
-    >
+    <div class="banner-bg">
       <div class="minibox">
-        <ul>
-          <li
-            :style="`background-image: url(${$static.home.home_game_download});`"
-            @click="gameDownload"
-          >pc</li>
-          <li
-            :style="`background-image: url(${$static.home.home_game_download});`"
-            @click="gameDownload"
-          >android</li>
-          <li
-            :style="`background-image: url(${$static.home.home_game_download});`"
-            @click="gameDownload"
-          >ios</li>
-        </ul>
+        <div class="root-swiper">
+          <swiper
+            :options="swiperOptions"
+            class="banner-swiper"
+          >
+            <swiper-slide
+              v-for="(item, idx) of swiperlist"
+              :key="idx"
+              class="banner-slide"
+            >
+              <div
+                :style="`background-image: url(${item.banner});`"
+                class="slide-bg"
+              >
+                <h1>{{ item.name }}</h1>
+                <ul>
+                  <li
+                    v-for="(listItem, listIdx) of item.list"
+                    :key="listIdx"
+                  >
+                    <img
+                      src="../../../../../static/img/home/banner-icon-1x.png"
+                      class="icon"
+                    >
+                    <span>{{ listItem }}</span>
+                  </li>
+                </ul>
+                <button class="button">点击了解更多</button>
+              </div>
+            </swiper-slide>
+          </swiper>
+          <div class="swiper-button-prev">
+            <img
+              src="../../../../../static/img/home/icon9.png"
+              class="arrow-left click hover"
+            >
+          </div>
+          <div class="swiper-button-next">
+            <img
+              src="../../../../../static/img/home/icon8.png"
+              class="arrow-right click hover"
+            >
+          </div>
+        </div>
+        <div class="banner-bottom">
+          <ul>
+            <li
+              v-for="(item, idx) of bottomList"
+              :key="idx"
+            >
+              <img
+                :src="item.icon"
+                class="left"
+              >
+              <div class="right">
+                <span class="num">{{ item.num }}{{ item.numLabel }}</span>
+                <span class="desc">{{ item.desc }}</span>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -32,24 +76,56 @@ export default {
   },
   data() {
     return {
+      list: [1, 2, 3, 4],
       // 导航列表
-      list: [{
-        name: '傲世龙城',
-        banner: this.$static.home.banner_game_01,
-        icon: this.$static.home.banner_game_icon_aslc,
-        link: 'https://web.xinglaogame.com/#/m/c3731c997baf45dfa5497340253719c6/s/01d6fae38cdd4fbaa30b3f7eb123cb32/t/platform?gameurl=//kpa.xinglaogame.com/platform/prod/6/aslc_xlgame.apk'
+      swiperlist: [{
+        name: '一站式企业通信解决方案',
+        banner: '../../../../../static/img/home/banner1-1x.png',
+        list: ['全国归属 精准电销', '高频呼叫 稳定防封', '智能外显 畅通呼叫']
       }, {
-        name: '烽火龙城',
-        banner: this.$static.home.banner_game_02,
-        icon: this.$static.home.banner_game_02_icon,
-        link: 'https://web.xinglaogame.com/#/m/5b8992a8c54949ac8eb3dd13db5c5755/s/a1c3cd9cea5e4f5d8846f4cc0536c147/t/platform?gameurl=//kpa.xinglaogame.com/platform/prod/7/fhlc_xlgame.apk'
+        name: '持脉防控管理APP',
+        banner: '../../../../../static/img/home/banner2-1x.png',
+        list: ['智能拦截 降低投诉', '一键拨号 方便快捷', '通话跟进 快捷记录', '客资流转 高效管理']
       }, {
-        name: '主宰传奇',
-        banner: this.$static.home.banner_game_03,
-        icon: this.$static.home.banner_game_03_icon,
-        link: 'https://web.xinglaogame.com/#/m/7b7406f55eed4f959b17450fd585dc0b/s/73df33b31db74618af19fa7e15835192/t/platform?gameurl=//kpa.xinglaogame.com/platform/prod/8/zzcq_xlgame.apk'
+        name: '持脉工作手机',
+        banner: '../../../../../static/img/home/banner3-1x.png',
+        list: ['全国归属 精准电销', '高频呼叫 稳定防封', '智能外显 畅通呼叫']
       }],
-      cIdx: 0 // tab当前下标位置
+      cIdx: 0, // tab当前下标位置
+      swiperOptions: {
+        loop: true,
+        autoplay: {
+          delay: 5000000,
+          disableOnInteraction: false
+        },
+        slidesPerView: 'auto',
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        }
+      },
+      bottomList: [{
+        icon: '../../../../../static/img/home/icon5.png',
+        num: 10,
+        numLabel: '+',
+        desc: '10年专业品质'
+      }, {
+        icon: '../../../../../static/img/home/icon4.png',
+        num: 30,
+        numLabel: '+',
+        desc: '覆盖全国省市'
+      }, {
+        icon: '../../../../../static/img/home/icon6.png',
+        num: 10000,
+        numLabel: '+',
+        desc: '企业选择'
+      }, {
+        icon: '../../../../../static/img/home/icon7.png',
+        num: 10,
+        numLabel: '万+',
+        desc: '线上运营坐席'
+      }],
+      groundBg: '../../../../../static/img/home/banner1-1x.png'
     }
   },
   created() {
@@ -69,63 +145,174 @@ export default {
 @import url(../../../public/assets/css/mixins.less);
 @import url(../../assets/css/variable.less);
 
-@height: @max_width * 0.378; // 组件高度
-@ulBottom: @height * 0.14; // ul列表距离底部高度
-@liWidth: 290px;
-@liHeight: @liWidth / 1.33;
-@bottomHeight: @liHeight * 0.14;
-@bottomPadding: @liHeight * 0.04;
+@height: 640px; // 组件高度
 
 .banner {
   position: relative;
   width: 100%;
   height: @height;
 
-  .banner-bg {
-    width: 100%;
+  .minibox {
+    position: relative;
+    margin: auto;
+    width: @mini_width;
     height: @height;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center top;
+    overflow: hidden;
+    // background-color: thistle;
+  }
 
-    .minibox {
-      position: relative;
-      margin: auto;
+  .root-swiper {
+    position: relative;
+    .banner-swiper {
       width: @mini_width;
       height: @height;
-      overflow: hidden;
-      // background-color: thistle;
+
+      .slide-bg {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: @mini_width;
+        height: @height;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding-top: 164px;
+        box-sizing: border-box;
+
+        h1 {
+          font-size: 48px;
+          font-family: PingFang SC-Bold, PingFang SC;
+          font-weight: bold;
+          color: #ffffff;
+          line-height: 56px;
+        }
+
+        ul {
+          display: flex;
+          align-items: center;
+          margin-top: 22px;
+
+          li {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 50px;
+
+            .icon,
+            span {
+              display: inline-block;
+              vertical-align: middle;
+            }
+
+            .icon {
+              width: 19px;
+              height: 19px;
+            }
+
+            span {
+              line-height: 16px;
+              font-size: 16px;
+              color: #fff;
+              font-weight: 500;
+              margin-left: 4px;
+            }
+          }
+        }
+
+        button {
+          width: 192px;
+          height: 44px;
+          background: linear-gradient(124deg, #368dff 0%, #2bb5fd 100%);
+          border-radius: 52px 52px 52px 52px;
+          color: #fff;
+          font-size: 16px;
+          font-weight: bold;
+          margin-top: 68px;
+        }
+      }
     }
 
+    .swiper-button-next,
+    .swiper-button-prev {
+      position: absolute;
+      z-index: 3;
+      top: 270px;
+      width: 44px;
+      height: 44px;
+
+      .arrow-left,
+      .arrow-right {
+        width: 44px;
+        height: 44px;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+
+    .swiper-button-prev {
+      left: 180px;
+    }
+
+    .swiper-button-next {
+      right: 180px;
+    }
+  }
+
+  .banner-bottom {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 86px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    overflow: hidden;
+    padding: 10px 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     ul {
-      margin-top: 580px;
       display: flex;
-      justify-content: center;
+      align-items: center;
 
       li {
-        width: 189px;
-        height: 55px;
-        background-repeat: no-repeat;
-        background-size: cover;
-        margin-left: 20px;
-        font-size: 0;
-        border-radius: 5px;
-        // background-color: thistle;
-        transition: all 0.3s;
-        &:hover {
-          cursor: pointer;
-          background-color: rgba(255, 255, 255, 0.3);
-          transform: translate(0, -1px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 304px;
+        border-right: 1px solid #4c5471;
+        box-sizing: border-box;
+
+        .left {
+          width: 36px;
+          height: 36px;
         }
 
-        &:nth-child(1) {
-          background-position: 0px 0px;
+        .right {
+          margin-left: 10px;
+          .num {
+            display: block;
+            vertical-align: baseline;
+            font-size: 18px;
+            font-weight: bold;
+            color: #2cb3fd;
+          }
+
+          .desc {
+            display: block;
+            font-size: 12px;
+            font-weight: bold;
+            color: #fff;
+          }
         }
-        &:nth-child(2) {
-          background-position: -218px 0px;
-        }
-        &:nth-child(3) {
-          background-position: -437px 0px;
+
+        &:last-child {
+          border-right: none;
         }
       }
     }

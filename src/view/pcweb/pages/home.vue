@@ -2,7 +2,6 @@
   <div class="home">
     <banner />
     <introduction />
-    <hot-game />
     <float-right />
   </div>
 </template>
@@ -10,7 +9,6 @@
 <script>
 import banner from '../components/home/banner'
 import introduction from '../components/home/introduction'
-import hotGame from '../components/home/hotGame'
 import floatRight from '../components/home/floatRight'
 import { toast, toastLoading } from '@/utils/toast'
 
@@ -18,7 +16,6 @@ export default {
   components: {
     banner,
     introduction,
-    hotGame,
     floatRight
   },
   data() {
