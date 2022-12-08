@@ -7,7 +7,7 @@ export default [
       {
         path: 'home',
         meta: {
-          title: '九玩网络-首页',
+          title: '首页',
           keepAlive: false
         },
         component: () => import('@/view/pcweb/pages/home')

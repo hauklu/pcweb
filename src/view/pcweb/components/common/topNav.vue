@@ -128,8 +128,6 @@ export default {
   margin: auto;
   overflow: hidden;
   // box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  // background: rgba(255, 255, 255, 0.8);
   background: transparent;
   box-sizing: border-box;
 
@@ -146,6 +144,8 @@ export default {
     padding: @navHeight * 0.1 0;
     box-sizing: border-box;
     border-bottom: 1px solid #405581;
+    // background: #06143c;
+    // background: transparent;
   }
   .seo {
     .seo();

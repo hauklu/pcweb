@@ -41,5 +41,6 @@ export default {
   max-width: @max_width;
   min-width: @mini_width;
   margin: auto;
+  background: rgb(240, 242, 245);
 }
 </style>

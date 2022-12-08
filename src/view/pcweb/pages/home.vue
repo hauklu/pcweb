@@ -1,22 +1,24 @@
 <template>
   <div class="home">
     <banner />
-    <introduction />
-    <float-right />
+    <production />
+    <scheme />
+    <!-- <float-right /> -->
   </div>
 </template>
 
 <script>
 import banner from '../components/home/banner'
-import introduction from '../components/home/introduction'
 import floatRight from '../components/home/floatRight'
+import production from '../components/home/production'
+import scheme from '../components/home/scheme.vue'
 import { toast, toastLoading } from '@/utils/toast'
-
 export default {
   components: {
     banner,
-    introduction,
-    floatRight
+    floatRight,
+    production,
+    scheme
   },
   data() {
     return {
