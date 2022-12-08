@@ -25,6 +25,23 @@
   }
 }
 
+// 缩放图片
+.scale-img(@width: 200px; @height: 100px; ) {
+  width: @width;
+  height: @height;
+  overflow: hidden;
+
+  .scale-img-item {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
 // 毛玻璃样式
 .ground-glass {
   overflow: hidden;

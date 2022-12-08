@@ -3,6 +3,9 @@
     <banner />
     <production />
     <scheme />
+    <advantage />
+    <scene />
+    <partner />
     <!-- <float-right /> -->
   </div>
 </template>
@@ -12,13 +15,19 @@ import banner from '../components/home/banner'
 import floatRight from '../components/home/floatRight'
 import production from '../components/home/production'
 import scheme from '../components/home/scheme.vue'
+import advantage from '../components/home/advantage'
+import scene from '../components/home/scene'
+import partner from '../components/home/partner'
 import { toast, toastLoading } from '@/utils/toast'
 export default {
   components: {
     banner,
     floatRight,
     production,
-    scheme
+    scheme,
+    advantage,
+    scene,
+    partner
   },
   data() {
     return {
