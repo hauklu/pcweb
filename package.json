@@ -1,8 +1,8 @@
 {
-  "name": "suhao",
+  "name": "zwq",
   "version": "1.0.0",
   "description": "html_act",
-  "author": "suhao <mzsu_@outlook.com>",
+  "author": "zwq",
   "private": true,
   "scripts": {
     "dev": "cross-env BABEL_ENV=development PLATFORM=jw env_config=dev webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",

@@ -10,17 +10,16 @@
           class="root-logo"
         >
         <div class="root-nav">
-          <ul>
+          <ul class="tab">
             <li
-              v-for="(i, idx) of list"
+              v-for="(item, idx) of list"
               ref="tab"
               :key="idx"
-              :class="i.style"
-              @click="switchTab(i, idx)"
-              @mouseover="liMouseover"
-              @mouseout="liMouseout"
+              :class="idx === tabIdx && 'tab-item__active'"
+              class="tab-item"
+              @click="switchTab(item, idx)"
             >
-              {{ i.name }}
+              {{ item.name }}
             </li>
             <div
               ref="tabLine"
@@ -53,27 +52,27 @@ export default {
         name: '首页',
         style: ''
       }, {
-        path: '/kefu',
+        path: '/production',
         name: '产品介绍',
         style: ''
       }, {
-        path: '/tutelage',
+        path: '/solution',
         name: '解决方案',
         style: ''
       }, {
-        path: '/tutelage',
+        path: '/solution',
         name: '渠道合作',
         style: ''
       }, {
-        path: '/tutelage',
+        path: '/solution',
         name: '免费试用',
         style: ''
       }, {
-        path: '/tutelage',
+        path: '/solution',
         name: '关于我们',
         style: ''
       }, {
-        path: '/tutelage',
+        path: '/solution',
         name: '联系我们',
         style: ''
       }],
@@ -84,7 +83,6 @@ export default {
   },
   watch: {
     tabIdx(newIdx, oldIdx) {
-      this.changeTab(newIdx)
       this.setTabLineX()
     }
   },
@@ -92,7 +90,6 @@ export default {
   },
   mounted() {
     this.initTab()
-    this.setTabLineX()
   },
   beforeDestroy() {
   },
@@ -110,30 +107,19 @@ export default {
     stickyScroll({ isFixed, scrollTop }) {
       this.isFixed = (scrollTop > 100)
     },
-    // 鼠标离开li时触发
-    liMouseout() {
-      this.changeTab(this.tabIdx)
-    },
-    // 鼠标经过li时触发
-    liMouseover() {
-      this.list.forEach((item, idx, arr) => {
-        item.style = ''
-      })
-    },
-    // tab下标改变时触发
-    changeTab(newIdx) {
-      this.list.forEach((item, idx, arr) => {
-        item.style = ''
-      })
-      this.list[newIdx].style = 'li--active'
-      this.$router.push(this.list[newIdx].path)
+    // tab下标改变时触发样式改变
+    styleChangeByTabIdx() {
+      const idx = this.list.findIndex(item => item.path === this.$route.path)
+      if (idx !== -1) this.tabIdx = idx
     },
     // 切换tab
     switchTab(i, idx) {
       this.tabIdx = idx
+      this.$router.push(this.list[idx].path)
     },
     initTab() {
-      this.changeTab(this.tabIdx)
+      this.setTabLineX()
+      this.styleChangeByTabIdx()
     },
     toastLoading
   }
@@ -148,6 +134,8 @@ export default {
 
 .top-nav {
   position: fixed;
+  left: 0;
+  right: 0;
   z-index: 99;
   width: @mini_width;
   margin: auto;
@@ -202,13 +190,13 @@ export default {
     width: 680px;
     margin-left: 80px;
 
-    ul {
+    .tab {
       position: relative;
       display: flex;
       justify-content: space-around;
       align-items: center;
       width: 100%;
-      li {
+      .tab-item {
         flex: 1;
         height: @topNavHeight;
         position: relative;
@@ -222,15 +210,10 @@ export default {
           cursor: pointer;
           color: #368fff;
           transform: translate3d(0, -2px, 0);
-
-          &::after {
-            .wh(95%, 2px);
-            background-color: #cf0f32;
-          }
         }
       }
 
-      .li--active {
+      .tab-item__active {
         color: #368fff;
       }
 

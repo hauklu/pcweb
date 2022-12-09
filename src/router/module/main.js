@@ -13,19 +13,19 @@ export default [
         component: () => import('@/view/pcweb/pages/home')
       },
       {
-        path: 'kefu',
+        path: 'production',
         meta: {
-          title: '客服',
+          title: '产品介绍',
           keepAlive: false
         },
-        component: () => import('@/view/pcweb/pages/kefu')
+        component: () => import('@/view/pcweb/pages/production')
       }, {
-        path: 'tutelage',
+        path: 'solution',
         meta: {
-          title: '家长监护',
+          title: '解决方案',
           keepAlive: false
         },
-        component: () => import('@/view/pcweb/pages/tutelage')
+        component: () => import('@/view/pcweb/pages/solution')
       }
     ]
   }
