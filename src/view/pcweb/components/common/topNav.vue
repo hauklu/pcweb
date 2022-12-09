@@ -7,21 +7,28 @@
       >
         <img
           :src="logo"
-          class="logo"
+          class="root-logo"
         >
-        <ul class="nav">
-          <li
-            v-for="(i, idx) of list"
-            :key="idx"
-            :class="i.style"
-            @click="switchTab(i, idx)"
-            @mouseover="liMouseover"
-            @mouseout="liMouseout"
-          >
-            {{ i.name }}
-          </li>
-        </ul>
-        <div class="call">
+        <div class="root-nav">
+          <ul>
+            <li
+              v-for="(i, idx) of list"
+              ref="tab"
+              :key="idx"
+              :class="i.style"
+              @click="switchTab(i, idx)"
+              @mouseover="liMouseover"
+              @mouseout="liMouseout"
+            >
+              {{ i.name }}
+            </li>
+            <div
+              ref="tabLine"
+              class="root-nav-line"
+            />
+          </ul>
+        </div>
+        <div class="root-call hover">
           <img src="../../../../../static/img/home/icon3.png">
           <span>4008017799</span>
         </div>
@@ -71,30 +78,41 @@ export default {
         style: ''
       }],
       // 当前tab下标
-      cIdx: 0,
+      tabIdx: 0,
       isFixed: false // head的悬浮状态
     }
   },
   watch: {
-    cIdx(newIdx, oldIdx) {
+    tabIdx(newIdx, oldIdx) {
       this.changeTab(newIdx)
+      this.setTabLineX()
     }
   },
   created() {
   },
   mounted() {
     this.initTab()
+    this.setTabLineX()
   },
   beforeDestroy() {
-
   },
   methods: {
+    // 设置tab__line横条的x轴每次横移需要的距离
+    setTabLineX() {
+      this.$nextTick(() => {
+        const tabWidth = this.$refs.tab[0].offsetWidth
+        const elLine = this.$refs.tabLine
+        const tabLineX = tabWidth * this.tabIdx + tabWidth / 2
+        elLine.style.cssText += `transform: translateX(${tabLineX}px) translateX(-50%);`
+      })
+    },
+    // sticky滚动时触发
     stickyScroll({ isFixed, scrollTop }) {
       this.isFixed = (scrollTop > 100)
     },
     // 鼠标离开li时触发
     liMouseout() {
-      this.changeTab(this.cIdx)
+      this.changeTab(this.tabIdx)
     },
     // 鼠标经过li时触发
     liMouseover() {
@@ -112,10 +130,10 @@ export default {
     },
     // 切换tab
     switchTab(i, idx) {
-      this.cIdx = idx
+      this.tabIdx = idx
     },
     initTab() {
-      this.changeTab(this.cIdx)
+      this.changeTab(this.tabIdx)
     },
     toastLoading
   }
@@ -129,16 +147,14 @@ export default {
 @navHeight: @topNavHeight;
 
 .top-nav {
-  // position: fixed;
+  position: fixed;
+  z-index: 99;
   width: @mini_width;
   margin: auto;
-  height: 64px;
+  height: @topNavHeight;
   background: transparent;
 
   & /deep/ .pb-sticky {
-    background: transparent;
-    // background: #ccc;
-    position: fixed;
   }
 
   .minibox {
@@ -153,10 +169,10 @@ export default {
   }
 
   .minibox__fixed {
-    background: #ccc;
+    background: #0c1e4a;
   }
 
-  .logo {
+  .root-logo {
     display: inline-block;
     width: 104px;
     height: 28px;
@@ -182,51 +198,55 @@ export default {
     }
   }
 
-  .nav {
+  .root-nav {
+    width: 680px;
     margin-left: 80px;
-    li {
+
+    ul {
       position: relative;
-      display: inline-block;
-      line-height: @navHeight;
-      font-size: 16px;
-      margin-left: 34px;
-      color: #fff;
-      transition: all 0.2s linear;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      li {
+        flex: 1;
+        height: @topNavHeight;
+        position: relative;
+        display: inline-block;
+        line-height: @navHeight;
+        font-size: 16px;
+        color: #fff;
+        text-align: center;
 
-      &::after {
-        content: '';
-        position: absolute;
-        top: @navHeight - 15px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 0;
-        height: 0;
-        transition: all 0.2s linear;
-      }
+        &:hover {
+          cursor: pointer;
+          color: #368fff;
+          transform: translate3d(0, -2px, 0);
 
-      &:hover {
-        cursor: pointer;
-        color: #368fff;
-        transform: translate3d(0, -2px, 0);
-
-        &::after {
-          .wh(95%, 2px);
-          background-color: #cf0f32;
+          &::after {
+            .wh(95%, 2px);
+            background-color: #cf0f32;
+          }
         }
       }
-    }
 
-    .li--active {
-      color: #368fff;
+      .li--active {
+        color: #368fff;
+      }
 
-      &::after {
-        .wh(95%, 2px);
-        background-color: #cf0f32;
+      .root-nav-line {
+        position: absolute;
+        left: 0;
+        bottom: 1px;
+        width: 50px;
+        height: 2px;
+        background: #fff;
+        transition: all 0.5s;
       }
     }
   }
 
-  .call {
+  .root-call {
     margin-left: 80px;
     display: flex;
     align-items: center;

@@ -15,14 +15,14 @@ export default [
       {
         path: 'kefu',
         meta: {
-          title: '九玩官网-客服',
+          title: '客服',
           keepAlive: false
         },
         component: () => import('@/view/pcweb/pages/kefu')
       }, {
         path: 'tutelage',
         meta: {
-          title: '九玩官网-家长监护',
+          title: '家长监护',
           keepAlive: false
         },
         component: () => import('@/view/pcweb/pages/tutelage')

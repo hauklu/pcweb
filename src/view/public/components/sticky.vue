@@ -1,5 +1,8 @@
 <template>
-  <div :style="isFixed && `height: ${stickyHeight}px`">
+  <div
+    :style="isFixed && `height: ${stickyHeight}px`"
+    class="pb-sticky__placeholder"
+  >
     <div
       ref="pbSticky"
       :style="isFixed && `top: ${top}px; z-index: ${zIndex};`"
