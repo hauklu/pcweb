@@ -26,12 +26,10 @@
 }
 
 // 缩放图片
-.scale-img(@width: 200px; @height: 100px; ) {
-  width: @width;
-  height: @height;
+.scale-img {
   overflow: hidden;
 
-  .scale-img-item {
+  &>img {
     width: 100%;
     height: 100%;
     transition: transform 0.4s;

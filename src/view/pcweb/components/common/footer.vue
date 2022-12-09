@@ -1,17 +1,38 @@
 <template>
   <div class="footer">
-    <div class="minibox">
-      <p
-        class="notice"
-        v-html="notice"
-      />
-      <div class="qrcode-wrap">
-        <p class="top">联系我们</p>
+    <div
+      :style="`background-image: url(${banner});`"
+      class="minibox"
+    >
+      <div class="root-left">
         <img
-          :src="$static.icon.qrcode"
-          class="qrcode"
+          :src="logo"
+          class="logo"
         >
-        <p class="bottom">微信公众号</p>
+        <div class="container">
+          <div class="container-left">
+            <p class="line-1">咨询电话：4008017799</p>
+            <p class="line-2">官方微信：Cpu520</p>
+          </div>
+          <div class="container-right">
+            <p class="line-1">商务合作：330460289@qg.com</p>
+            <p class="line-2">简历投递：uenan.su@zkj.com</p>
+          </div>
+        </div>
+      </div>
+      <div class="root-right">
+        <div class="wechat-code">
+          <div class="scale-img hover">
+            <img :src="wechatCode">
+          </div>
+          <p class="text">微信公众号</p>
+        </div>
+        <div class="offical-code">
+          <div class="scale-img hover">
+            <img :src="officalCode">
+          </div>
+          <p class="text">官方微信号</p>
+        </div>
       </div>
     </div>
   </div>
@@ -21,60 +42,104 @@
 export default {
   data() {
     return {
-      notice: `游戏许可信息:<br><br>抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。<br>适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活。<br>杭州九玩网络科技有限公司&nbsp;浙网文（2018）2743-176号<br>ICP证：浙B2-20180814&nbsp;&nbsp;<br><a href="https://beian.miit.gov.cn/" style="color: #999;">浙ICP备17055122号</a><br>地址: 浙江省杭州市萧山区宁围街道保亿中心2幢4301室`
+      logo: require('@img/home/logo.png'),
+      banner: require('@img/home/footer.png'),
+      wechatCode: require('@img/fotter/wechat_code.png'),
+      officalCode: require('@img/fotter/offical_code.png')
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
-@import url(../../../public/assets/css/mixins.less);
 @import url(../../assets/css/variable.less);
 
 .footer {
   position: relative;
   width: 100%;
-  height: 250px;
-  padding: 30px 0;
-  overflow: hidden;
-  background-color: #272a2c;
 
   .minibox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     position: relative;
     width: @mini_width;
-    height: 100%;
+    height: 320px;
+    padding: 0 180px;
+    box-sizing: border-box;
     margin: auto;
+    background-size: 100% 100%;
 
-    .notice {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      line-height: 25px;
-      text-align: center;
-      color: #999;
-      font-size: 12px;
-    }
+    .root-left {
+      display: flex;
+      align-items: center;
+      height: 41px;
 
-    .qrcode-wrap {
-      position: absolute;
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%);
-      width: 100px;
-
-      .bottom,
-      .top {
-        font-size: 12px;
-        color: #999;
-        text-align: center;
-        line-height: 30px;
+      .logo {
+        width: 150px;
+        height: 41px;
       }
 
-      img {
+      .container {
+        display: flex;
+        align-items: center;
+        margin-left: 32px;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 14px;
+        color: #ccc;
+
+        .container-left {
+          .line-1 {
+            margin-bottom: 12px;
+          }
+        }
+
+        .container-right {
+          margin-left: 24px;
+          .line-1 {
+            margin-bottom: 12px;
+          }
+        }
+      }
+    }
+
+    .root-right {
+      display: flex;
+      align-items: center;
+
+      .wechat-code {
+        .scale-img {
+          width: 104px;
+          height: 104px;
+        }
+        p {
+          margin-top: 5px;
+          text-align: center;
+          font-size: 12px;
+          font-weight: 500;
+          line-height: 14px;
+          color: #ccc;
+        }
+      }
+
+      .offical-code {
         display: block;
-        width: 100px;
-        height: 100px;
+        margin-left: 24px;
+
+        .scale-img {
+          width: 104px;
+          height: 104px;
+        }
+
+        .text {
+          margin-top: 5px;
+          text-align: center;
+          font-size: 12px;
+          font-weight: 500;
+          line-height: 14px;
+          color: #ccc;
+        }
       }
     }
   }

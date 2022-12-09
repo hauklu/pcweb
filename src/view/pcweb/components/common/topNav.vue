@@ -1,39 +1,45 @@
 <template>
   <div class="top-nav">
-    <header class="minibox">
-      <img
-        src="../../../../../static/img/home/logo.png"
-        class="logo"
+    <pb-sticky @scroll="stickyScroll">
+      <header
+        :class="isFixed && 'minibox__fixed'"
+        class="minibox"
       >
-      <ul class="nav">
-        <li
-          v-for="(i, idx) of list"
-          :key="idx"
-          :class="i.style"
-          @click="switchTab(i, idx)"
-          @mouseover="liMouseover"
-          @mouseout="liMouseout"
+        <img
+          :src="logo"
+          class="logo"
         >
-          {{ i.name }}
-        </li>
-      </ul>
-      <div class="call">
-        <img src="../../../../../static/img/home/icon3.png">
-        <span>4008017799</span>
-      </div>
-      <h1 class="seo">通信, 企业通信</h1>
-    </header>
+        <ul class="nav">
+          <li
+            v-for="(i, idx) of list"
+            :key="idx"
+            :class="i.style"
+            @click="switchTab(i, idx)"
+            @mouseover="liMouseover"
+            @mouseout="liMouseout"
+          >
+            {{ i.name }}
+          </li>
+        </ul>
+        <div class="call">
+          <img src="../../../../../static/img/home/icon3.png">
+          <span>4008017799</span>
+        </div>
+      </header>
+    </pb-sticky>
   </div>
 </template>
 
 <script>
+import sticky from '@/view/public/components/sticky.vue'
 import { toastLoading } from '@/utils/toast'
-
 export default {
   components: {
+    pbSticky: sticky
   },
   data() {
     return {
+      logo: require('@img/home/logo.png'),
       // 导航列表
       list: [{
         path: '/home',
@@ -65,7 +71,8 @@ export default {
         style: ''
       }],
       // 当前tab下标
-      cIdx: 0
+      cIdx: 0,
+      isFixed: false // head的悬浮状态
     }
   },
   watch: {
@@ -78,7 +85,13 @@ export default {
   mounted() {
     this.initTab()
   },
+  beforeDestroy() {
+
+  },
   methods: {
+    stickyScroll({ isFixed, scrollTop }) {
+      this.isFixed = (scrollTop > 100)
+    },
     // 鼠标离开li时触发
     liMouseout() {
       this.changeTab(this.cIdx)
@@ -116,39 +129,31 @@ export default {
 @navHeight: @topNavHeight;
 
 .top-nav {
-  position: fixed;
-  z-index: 9;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  max-width: @max_width;
-  min-width: @mini_width;
-  height: @navHeight;
+  // position: fixed;
+  width: @mini_width;
   margin: auto;
-  overflow: hidden;
-  // box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
+  height: 64px;
   background: transparent;
-  box-sizing: border-box;
+
+  & /deep/ .pb-sticky {
+    background: transparent;
+    // background: #ccc;
+    position: fixed;
+  }
 
   .minibox {
     display: flex;
     align-items: center;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    margin-left: -@mini_width / 2;
     width: @mini_width;
     height: @navHeight;
     padding: @navHeight * 0.1 0;
     box-sizing: border-box;
     border-bottom: 1px solid #405581;
-    // background: #06143c;
-    // background: transparent;
+    background: transparent;
   }
-  .seo {
-    .seo();
+
+  .minibox__fixed {
+    background: #ccc;
   }
 
   .logo {
@@ -194,8 +199,8 @@ export default {
         top: @navHeight - 15px;
         left: 50%;
         transform: translateX(-50%);
-        .wh(0px, 0px);
-        // background-color: #818181;
+        width: 0;
+        height: 0;
         transition: all 0.2s linear;
       }
 

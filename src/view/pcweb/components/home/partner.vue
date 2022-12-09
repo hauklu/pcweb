@@ -1,9 +1,6 @@
 <template>
   <div class="home-partner">
-    <div
-      :style="`background-image: url(${banner});`"
-      class="minibox"
-    >
+    <div class="minibox">
       <home-title>
         <template slot="title">我们的合作伙伴</template>
         <template slot="desc">权藏认证，深受国内众多知名企业认可</template>
@@ -17,7 +14,7 @@
           <div class="banner scale-img">
             <img
               :src="item.banner"
-              class="banner-img scale-img-item"
+              class="banner-img"
             >
           </div>
         </li>
@@ -70,7 +67,7 @@ export default {
     position: relative;
     margin: auto;
     width: @mini_width;
-    height: 840px;
+    height: 622px;
     overflow: hidden;
     background: #f3f4f6;
 
@@ -91,7 +88,8 @@ export default {
         margin-bottom: 24px;
 
         .banner {
-          .scale-img(252px, 100px);
+          width: 252px;
+          height: 100px;
         }
       }
     }

@@ -18,7 +18,7 @@
           <div class="banner scale-img">
             <img
               :src="item.banner"
-              class="banner-img scale-img-item"
+              class="banner-img"
             >
           </div>
           <div class="container">
@@ -116,7 +116,8 @@ export default {
         margin-bottom: 24px;
 
         .banner {
-          .scale-img(252px, 144px);
+          width: 252px;
+          height: 144px;
         }
 
         .container {
