@@ -4,7 +4,7 @@
       <swiper :options="swiperOptions" class="banner-swiper">
         <swiper-slide v-for="(item, idx) of swiperlist" :key="idx" class="banner-slide">
           <div :style="`background-image: url(${item.banner});`" class="slide-bg">
-            <div class="minibox">
+            <div class="slide-minibox">
               <h1>{{ item.name }}</h1>
               <ul>
                 <li v-for="(listItem, listIdx) of item.list" :key="listIdx">
@@ -17,7 +17,7 @@
           </div>
         </swiper-slide>
       </swiper>
-      <div class="minibox">
+      <div class="swiper-button-minibox">
         <div class="swiper-button-prev">
           <img src="../../../../../static/img/home/icon9.png" class="arrow-left click hover" >
         </div>
@@ -135,16 +135,6 @@ export default {
   height: @height;
   float: left;
 
-  .minibox {
-    position: relative;
-    margin: 0 auto;
-    width: @mini_width;
-    height: @height;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
   .root-swiper {
     position: relative;
     height: @height;
@@ -160,57 +150,77 @@ export default {
         padding-top: 180px;
         box-sizing: border-box;
 
-        h1 {
-          font-size: 48px;
-          font-family: PingFang SC-Bold, PingFang SC;
-          font-weight: bold;
-          color: #ffffff;
-          line-height: 56px;
-        }
-
-        ul {
+        .slide-minibox {
+          position: relative;
+          margin: 0 auto;
+          width: @mini_width;
+          height: @height;
           display: flex;
+          flex-direction: column;
           align-items: center;
-          margin-top: 22px;
 
-          li {
-            display: inline-block;
-            vertical-align: middle;
-            margin-right: 50px;
+          h1 {
+            font-size: 48px;
+            font-family: PingFang SC-Bold, PingFang SC;
+            font-weight: bold;
+            color: #ffffff;
+            line-height: 56px;
+          }
 
-            .icon,
-            span {
+          ul {
+            display: flex;
+            align-items: center;
+            margin-top: 22px;
+
+            li {
               display: inline-block;
               vertical-align: middle;
-            }
+              margin-right: 50px;
 
-            .icon {
-              width: 19px;
-              height: 19px;
-            }
+              .icon,
+              span {
+                display: inline-block;
+                vertical-align: middle;
+              }
 
-            span {
-              line-height: 16px;
-              font-size: 16px;
-              color: #fff;
-              font-weight: 500;
-              margin-left: 4px;
+              .icon {
+                width: 19px;
+                height: 19px;
+              }
+
+              span {
+                line-height: 16px;
+                font-size: 16px;
+                color: #fff;
+                font-weight: 500;
+                margin-left: 4px;
+              }
             }
           }
-        }
 
-        button {
-          width: 192px;
-          height: 44px;
-          background: linear-gradient(124deg, #368dff 0%, #2bb5fd 100%);
-          border-radius: 52px 52px 52px 52px;
-          color: #fff;
-          font-size: 16px;
-          font-weight: bold;
-          margin-top: 68px;
-        }
+          button {
+            width: 192px;
+            height: 44px;
+            background: linear-gradient(124deg, #368dff 0%, #2bb5fd 100%);
+            border-radius: 52px 52px 52px 52px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 68px;
+          }
+       }
       }
     }
+  }
+
+  .swiper-button-minibox {
+    position: absolute;
+    z-index: 3;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: 0 auto;
+    width: @mini_width;
 
     .swiper-button-next,
     .swiper-button-prev {
