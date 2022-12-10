@@ -1,38 +1,41 @@
 <template>
-  <div class="top-nav">
-    <pb-sticky @scroll="stickyScroll">
-      <header
-        :class="isFixed && 'minibox__fixed'"
-        class="minibox"
-      >
-        <img
-          :src="logo"
-          class="root-logo"
-        >
-        <div class="root-nav">
-          <ul class="tab">
-            <li
-              v-for="(item, idx) of list"
-              ref="tab"
-              :key="idx"
-              :class="idx === tabIdx && 'tab-item__active'"
-              class="tab-item"
-              @click="switchTab(item, idx)"
+  <div :class="isFixed && 'header__fixed'" class="top-nav">
+    <div class="minibox__wrap">
+      <div class="minibox">
+        <pb-sticky class="minibox-sticky" @scroll="stickyScroll">
+          <header
+            class="header"
+          >
+            <img
+              :src="logo"
+              class="root-logo"
             >
-              {{ item.name }}
-            </li>
-            <div
-              ref="tabLine"
-              class="root-nav-line"
-            />
-          </ul>
-        </div>
-        <div class="root-call hover">
-          <img src="../../../../../static/img/home/icon3.png">
-          <span>4008017799</span>
-        </div>
-      </header>
-    </pb-sticky>
+            <div class="root-nav">
+              <ul class="tab">
+                <li
+                  v-for="(item, idx) of list"
+                  ref="tab"
+                  :key="idx"
+                  :class="idx === tabIdx && 'tab-item__active'"
+                  class="tab-item"
+                  @click="switchTab(item, idx)"
+                >
+                  {{ item.name }}
+                </li>
+                <div
+                  ref="tabLine"
+                  class="root-nav-line"
+                />
+              </ul>
+            </div>
+            <div class="root-call hover">
+              <img src="../../../../../static/img/home/icon3.png">
+              <span>4008017799</span>
+            </div>
+          </header>
+        </pb-sticky>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -136,28 +139,35 @@ export default {
   position: fixed;
   left: 0;
   right: 0;
-  z-index: 99;
-  width: @mini_width;
+  width: @max_width;
   margin: auto;
+  z-index: 99;
   height: @topNavHeight;
+  border-bottom: 1px solid #405581;
   background: transparent;
+  box-sizing: border-box;
 
   & /deep/ .pb-sticky {
   }
 
+  .minibox__wrap {
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
   .minibox {
+    width: @mini_width;
+    height: @navHeight;
+    margin: 0 auto;
+  }
+
+  .header {
     display: flex;
     align-items: center;
     width: @mini_width;
     height: @navHeight;
-    padding: @navHeight * 0.1 0;
-    box-sizing: border-box;
-    border-bottom: 1px solid #405581;
-    background: transparent;
-  }
-
-  .minibox__fixed {
-    background: #0c1e4a;
+    margin: 0 auto;
   }
 
   .root-logo {
@@ -255,5 +265,9 @@ export default {
       line-height: 14px;
     }
   }
+}
+
+.header__fixed {
+  background: #0c1e4a;
 }
 </style>

@@ -38,9 +38,9 @@ export default {
 .pcweb-index {
   position: relative;
   width: 100%;
-  max-width: @max_width;
+  // max-width: @max_width;
   min-width: @mini_width;
-  margin: auto;
-  background: rgb(240, 242, 245);
+  // margin: auto;
+  background: #fff;
 }
 </style>

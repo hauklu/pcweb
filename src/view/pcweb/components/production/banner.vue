@@ -1,10 +1,7 @@
 <template>
   <div class="banner">
-    <div class="minibox">
-      <div
-        :style="`background-image: url(${banner});`"
-        class="banner"
-      />
+    <div :style="`background-image: url(${banner});`" class="banner-bg">
+      <div class="minibox"/>
     </div>
   </div>
 </template>
@@ -16,7 +13,8 @@ export default {
   },
   data() {
     return {
-      banner: require('@img/solution/banner.png')
+      // banner: require('@img/solution/banner.png')
+      banner: require('@img/home/banner1-1x.png')
     }
   },
   created() {
@@ -24,10 +22,7 @@ export default {
   mounted() {
   },
   methods: {
-    // 游戏下载
-    gameDownload() {
-      toast('暂未开放, 敬请期待!')
-    }
+    toast
   }
 }
 </script>
@@ -43,18 +38,19 @@ export default {
   width: 100%;
   height: @height;
 
-  .minibox {
-    position: relative;
-    margin: auto;
-    width: @mini_width;
+  .banner-bg {
+    width: 100%;
     height: @height;
-    overflow: hidden;
-  }
+    background-repeat: no-repeat;
+    background-position: top center;
 
-  .banner {
-    width: @mini_width;
-    height: @height;
-    background-size: 100% 100%;
+    .minibox {
+      position: relative;
+      margin: auto;
+      width: @mini_width;
+      height: @height;
+      overflow: hidden;
+    }
   }
 }
 </style>
