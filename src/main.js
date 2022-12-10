@@ -27,6 +27,10 @@ Vue.use(Lazyload)
 Vue.use(Icon)
 // vant end
 
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+Vue.use(ElementUI)
+
 import 'babel-polyfill'
 import Es6Promise from 'es6-promise'
 require('es6-promise').polyfill()

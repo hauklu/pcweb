@@ -20,7 +20,20 @@
                   class="tab-item"
                   @click="switchTab(item, idx)"
                 >
-                  {{ item.name }}
+
+                  <el-dropdown v-if="item.path === '/production'" :tabindex="0">
+                    <span class="tab-item-dropdown-head">
+                      <span class="tab-item-text">{{ item.name }}</span>
+                      <i class="el-icon-arrow-down tab-item-icon" />
+                    </span>
+                    <el-dropdown-menu slot="dropdown">
+                      <el-dropdown-item>电销卡</el-dropdown-item>
+                      <el-dropdown-item>隐私号通话</el-dropdown-item>
+                      <el-dropdown-item>持脉scrm</el-dropdown-item>
+                      <el-dropdown-item>工作手机</el-dropdown-item>
+                    </el-dropdown-menu>
+                  </el-dropdown>
+                  <span v-else class="tab-item-text">{{ item.name }}</span>
                 </li>
                 <div
                   ref="tabLine"
@@ -212,19 +225,36 @@ export default {
         position: relative;
         display: inline-block;
         line-height: @navHeight;
-        font-size: 16px;
-        color: #fff;
         text-align: center;
+
+        .tab-item-dropdown-head {
+          display: inline-block;
+          height: 100%;
+          // background-color: #000;
+        }
+
+        .tab-item-icon,
+        .tab-item-text {
+          font-size: 16px;
+          color: #fff;
+        }
 
         &:hover {
           cursor: pointer;
-          color: #368fff;
           transform: translate3d(0, -2px, 0);
+
+          .tab-item-icon,
+          .tab-item-text {
+              color: #368fff;
+          }
         }
       }
 
       .tab-item__active {
-        color: #368fff;
+        .tab-item-icon,
+        .tab-item-text {
+          color: #368fff;
+        }
       }
 
       .root-nav-line {
