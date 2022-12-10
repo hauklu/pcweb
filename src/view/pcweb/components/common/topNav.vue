@@ -20,11 +20,10 @@
                   class="tab-item"
                   @click="switchTab(item, idx)"
                 >
-
-                  <el-dropdown v-if="item.path === '/production'" :tabindex="0">
+                  <!-- <el-dropdown  :tabindex="0">
                     <span class="tab-item-dropdown-head">
                       <span class="tab-item-text">{{ item.name }}</span>
-                      <i class="el-icon-arrow-down tab-item-icon" />
+
                     </span>
                     <el-dropdown-menu slot="dropdown">
                       <el-dropdown-item>电销卡</el-dropdown-item>
@@ -32,7 +31,19 @@
                       <el-dropdown-item>持脉scrm</el-dropdown-item>
                       <el-dropdown-item>工作手机</el-dropdown-item>
                     </el-dropdown-menu>
-                  </el-dropdown>
+                  </el-dropdown> -->
+
+                  <span v-if="item.rootPath === '/production'" class="dropdown" @mouseenter="dropdownMouseenter" @mouseleave="dropdownMouseleave">
+                    <span class="dropdown-head" >
+                      <span class="tab-item-text">{{ item.name }}</span>
+                      <i class="el-icon-arrow-down tab-item-icon" />
+                    </span>
+                    <div :class="dropdownVisible && 'dropdown-menu__show'" class="dropdown-menu">
+                      <ul class="dropdown-menu-box">
+                        <li v-for="(ditem, didx) of dropdownList" :key="didx" class="dropdown-menu-box-item" @click.stop="clickDropdownItem(ditem, didx)">{{ ditem.name }}</li>
+                      </ul>
+                    </div>
+                  </span>
                   <span v-else class="tab-item-text">{{ item.name }}</span>
                 </li>
                 <div
@@ -64,37 +75,58 @@ export default {
       logo: require('@img/home/logo.png'),
       // 导航列表
       list: [{
+        rootPath: '/home',
         path: '/home',
         name: '首页',
         style: ''
       }, {
-        path: '/production',
+        rootPath: '/production',
+        path: '/production/call_card',
         name: '产品介绍',
         style: ''
       }, {
+        rootPath: '/solution',
         path: '/solution',
         name: '解决方案',
         style: ''
       }, {
-        path: '/solution',
+        rootPath: '/channel',
+        path: '/channel',
         name: '渠道合作',
         style: ''
       }, {
-        path: '/solution',
+        rootPath: '/try',
+        path: '/try',
         name: '免费试用',
         style: ''
       }, {
-        path: '/solution',
+        rootPath: '/about',
+        path: '/about',
         name: '关于我们',
         style: ''
       }, {
-        path: '/solution',
+        rootPath: '/call',
+        path: '/call',
         name: '联系我们',
         style: ''
       }],
       // 当前tab下标
       tabIdx: 0,
-      isFixed: false // head的悬浮状态
+      isFixed: false, // head的悬浮状态
+      dropdownVisible: true,
+      dropdownList: [{
+        name: '电销卡',
+        routeName: 'production_call_card'
+      }, {
+        name: '隐私号通话',
+        routeName: 'production_private_call'
+      }, {
+        name: '持脉scrm',
+        routeName: 'production_scrm'
+      }, {
+        name: '工作手机',
+        routeName: 'production_work_mobile'
+      }]
     }
   },
   watch: {
@@ -110,6 +142,22 @@ export default {
   beforeDestroy() {
   },
   methods: {
+    clickDropdownItem(item, idx) {
+      this.tabIdx = 1
+      console.log(item.routeName)
+      this.$router.push({
+        name: item.routeName
+      })
+      // this.$router.replace({
+      //   path: '/production/call_card'
+      // })
+    },
+    dropdownMouseenter() {
+      this.dropdownVisible = true
+    },
+    dropdownMouseleave() {
+      this.dropdownVisible = false
+    },
     // 设置tab__line横条的x轴每次横移需要的距离
     setTabLineX() {
       this.$nextTick(() => {
@@ -123,19 +171,20 @@ export default {
     stickyScroll({ isFixed, scrollTop }) {
       this.isFixed = (scrollTop > 100)
     },
-    // tab下标改变时触发样式改变
-    styleChangeByTabIdx() {
-      const idx = this.list.findIndex(item => item.path === this.$route.path)
+    // 初始化tab下标
+    initIdx() {
+      const rootPath = this.$route.matched[1].path
+      const idx = this.list.findIndex(item => item.rootPath === rootPath)
       if (idx !== -1) this.tabIdx = idx
     },
     // 切换tab
-    switchTab(i, idx) {
+    switchTab(item, idx) {
       this.tabIdx = idx
       this.$router.push(this.list[idx].path)
     },
     initTab() {
+      this.initIdx()
       this.setTabLineX()
-      this.styleChangeByTabIdx()
     },
     toastLoading
   }
@@ -227,16 +276,47 @@ export default {
         line-height: @navHeight;
         text-align: center;
 
-        .tab-item-dropdown-head {
-          display: inline-block;
-          height: 100%;
-          // background-color: #000;
-        }
-
         .tab-item-icon,
         .tab-item-text {
           font-size: 16px;
           color: #fff;
+        }
+
+        .dropdown {
+          position: relative;
+          display: inline-block;
+          height: 100%;
+          .dropdown-head {}
+          .dropdown-menu {
+            // position: absolute;
+            // top: @navHeight;
+            transform-origin: center top;
+            transition: all 0.2s;
+            transform: scaleY(0);
+            opacity: 0;
+            overflow: hidden;
+            .dropdown-menu-box {
+              height: auto;
+              background-color: #fff;
+              .dropdown-menu-box-item {
+                height: 45px;
+                line-height:45px;
+                font-size: 13px;
+                color: #606266;
+                box-sizing: border-box;
+                // border-bottom: 1px solid #ccc;
+                &:hover {
+                  color: #fff;
+                  background: #368fff;
+                }
+              }
+            }
+          }
+
+          .dropdown-menu__show {
+            transform: scaleY(1);
+            opacity: 1;
+          }
         }
 
         &:hover {

@@ -1,7 +1,7 @@
 <template>
   <div class="solution">
     <banner />
-    解决方案
+    全渠道
     <production />
     <scheme />
     <advantage />

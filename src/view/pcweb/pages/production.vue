@@ -1,11 +1,12 @@
 <template>
   <div class="solution">
-    <banner />
+    <router-view />
+    <!-- <banner />
     <production />
     <scheme />
     <advantage />
-    <scene />
-    <partner />
+    <scene /> -->
+    <!-- <partner /> -->
   </div>
 </template>
 

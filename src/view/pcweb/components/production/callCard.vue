@@ -1,7 +1,6 @@
 <template>
   <div class="solution">
     <banner />
-    解决方案
     <production />
     <scheme />
     <advantage />
@@ -11,12 +10,12 @@
 </template>
 
 <script>
-import banner from '../components/solution/banner'
-import production from '../components/home/production'
-import scheme from '../components/home/scheme.vue'
-import advantage from '../components/home/advantage'
-import scene from '../components/home/scene'
-import partner from '../components/home/partner'
+import banner from './banner'
+import production from '../home/production'
+import scheme from '../home/scheme.vue'
+import advantage from '../home/advantage'
+import scene from '../home/scene'
+import partner from '../home/partner'
 import { toast, toastLoading } from '@/utils/toast'
 export default {
   components: {
@@ -48,8 +47,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import url(../../public/assets/css/mixins.less);
-@import url(../assets/css/variable.less);
+@import url(../../../public/assets/css/mixins.less);
+@import url(../../assets/css/variable.less);
 
 .solution {
   width: 100%;

@@ -1,7 +1,7 @@
 <template>
   <div class="solution">
     <banner />
-    解决方案
+    免费试用
     <production />
     <scheme />
     <advantage />
