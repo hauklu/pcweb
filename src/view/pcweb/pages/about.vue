@@ -1,31 +1,17 @@
 <template>
   <div class="solution">
     <banner />
-    关于我们
-    <production />
-    <scheme />
-    <advantage />
-    <scene />
-    <partner />
+    <introduction />
   </div>
 </template>
 
 <script>
-import banner from '../components/solution/banner'
-import production from '../components/home/production'
-import scheme from '../components/home/scheme.vue'
-import advantage from '../components/home/advantage'
-import scene from '../components/home/scene'
-import partner from '../components/home/partner'
-import { toast, toastLoading } from '@/utils/toast'
+import banner from '../components/about/banner'
+import introduction from '../components/about/introduction'
 export default {
   components: {
     banner,
-    production,
-    scheme,
-    advantage,
-    scene,
-    partner
+    introduction
   },
   data() {
     return {
@@ -41,8 +27,6 @@ export default {
   mounted() {
   },
   methods: {
-    toastLoading,
-    toast
   }
 }
 </script>

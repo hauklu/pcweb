@@ -1,31 +1,18 @@
 <template>
   <div class="solution">
     <banner />
-    联系我们
-    <production />
-    <scheme />
-    <advantage />
-    <scene />
-    <partner />
+    <contact />
   </div>
 </template>
 
 <script>
-import banner from '../components/solution/banner'
-import production from '../components/home/production'
-import scheme from '../components/home/scheme.vue'
-import advantage from '../components/home/advantage'
-import scene from '../components/home/scene'
-import partner from '../components/home/partner'
+import banner from '../components/call/banner'
+import contact from '../components/call/contact'
 import { toast, toastLoading } from '@/utils/toast'
 export default {
   components: {
     banner,
-    production,
-    scheme,
-    advantage,
-    scene,
-    partner
+    contact
   },
   data() {
     return {
