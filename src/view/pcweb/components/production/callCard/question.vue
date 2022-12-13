@@ -5,8 +5,8 @@
       class="minibox"
     >
       <home-title>
-        <template slot="title">我们的优势</template>
-        <template slot="desc">企业通信管理一站式解决方案，助力企业业墙增长</template>
+        <template slot="title">你的企业是否有以下问题？</template>
+        <template slot="desc">持脉可以帮您解决以下的各类业务痛点</template>
       </home-title>
       <ul class="block">
         <li
@@ -18,7 +18,10 @@
             :src="item.banner"
             class="banner"
           >
-          <h3 class="title">{{ item.title }}</h3>
+          <h3
+            class="title"
+            v-html="item.title"
+          />
           <p class="desc">{{ item.desc }}</p>
         </li>
       </ul>
@@ -27,7 +30,7 @@
 </template>
 
 <script>
-import homeTitle from './common/homeTitle.vue'
+import homeTitle from '@/view/pcweb/components/home/common/homeTitle.vue'
 export default {
   components: {
     homeTitle
@@ -35,19 +38,23 @@ export default {
   data() {
     return {
       list: [{
-        banner: require('@img/home/show1.png'),
-        title: '通信管理一体化解快方案',
-        desc: '致力于为电销企业提供一站式服务，从咨询线索到最终成交全流程闭环管理，管控客户整个生命周期，同时监管销售的服务过程，避免客户流失，资源浪费。'
+        banner: require('@img/production/callCard/icon1.png'),
+        title: '办完卡<br/>打几天就被封卡？',
+        desc: '手机卡或座机呼出量有限，高频率呼出容易封号，解封比较麻烦。'
       }, {
-        banner: require('@img/home/show2.png'),
-        title: '多通信产品支撑',
-        desc: '配置隐私号外加实体卡，可以完美解决用户号卡易被封，无法高频呼叫的问题'
+        banner: require('@img/production/callCard/icon2.png'),
+        title: '号码归属地<br/>和自己公司所在地不符合？',
+        desc: '自己公司在杭州，给外地客户打电话，客户的信任感很差，成交受阻。'
       }, {
-        banner: require('@img/home/show3.png'),
-        title: '多运营商支撑',
-        desc: '公司与三大基础运营商及三十多家虚拟运营商深度合作，号卡资源丰富，同时配套提供电销系统及外呼线路，用户基数庞大，值得信赖。'
+        banner: require('@img/production/callCard/icon3.png'),
+        title: '实名制数量有限<br/>不能办理太多手机卡？',
+        desc: '每个员工使用身份证办理手机卡数量有限，只能注销重新办理。'
+      }, {
+        banner: require('@img/production/callCard/icon4.png'),
+        title: '打10个电话<br/>8个都接不通？',
+        desc: '号码高频呼出被标记，导致后续客户接通率低，成交困难。'
       }],
-      banner: require('@img/home/banner1-1x.png')
+      banner: undefined
     }
   },
   mounted() {
@@ -67,14 +74,15 @@ export default {
     position: relative;
     margin: auto;
     width: @mini_width;
-    height: 684px;
+    height: 603px;
     overflow: hidden;
     background-size: 100% 100%;
+    background-color: #f3f4f6;
 
     & /deep/ .home-title {
       .text,
       .desc {
-        color: #fff;
+        // color: #fff;
       }
     }
 
@@ -87,34 +95,38 @@ export default {
       .block-item {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        width: 344px;
-        height: 370px;
+        // align-items: center;
+        width: 260px;
+        height: 232px;
         margin-right: 24px;
-        padding: 0 37px;
+        padding: 0px 8px 0px 22px;
         box-sizing: border-box;
-        background-color: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(5px);
+        background-color: #fff;
+        // background-color: rgba(255, 255, 255, 0.1);
+        // backdrop-filter: blur(5px);
 
         .banner {
-          width: 180px;
-          height: 180px;
+          margin-top: 31px;
+          width: 40px;
+          height: 40px;
         }
 
         .title {
-          margin-top: 17px;
-          color: #fff;
-          font-size: 20px;
-          font-weight: 500;
-          line-height: 23px;
+          margin-top: 18px;
+          color: #333333;
+          font-size: 19px;
+          font-weight: bold;
+          line-height: 25px;
         }
 
         .desc {
-          margin-top: 22px;
-          color: #fff;
+          margin-top: 15px;
+          color: #999999;
           font-size: 12px;
           font-weight: 500;
           line-height: 20px;
+          padding-right: 20px;
+          box-sizing: border-box;
         }
       }
     }

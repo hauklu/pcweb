@@ -1,30 +1,26 @@
 <template>
   <div class="solution">
     <banner />
-    priv
-    <production />
-    <scheme />
+    <question />
     <advantage />
-    <scene />
+    <solution />
     <partner />
   </div>
 </template>
 
 <script>
-import banner from './banner'
-import production from '../home/production'
-import scheme from '../home/scheme.vue'
-import advantage from '../home/advantage'
-import scene from '../home/scene'
-import partner from '../home/partner'
+import banner from './callCard/banner.vue'
+import question from './callCard/question'
+import advantage from './privateCall/advantage.vue'
+import solution from '@/view/pcweb/components/production/callCard/solution'
+import partner from '@/view/pcweb/components/home/partner'
 import { toast, toastLoading } from '@/utils/toast'
 export default {
   components: {
     banner,
-    production,
-    scheme,
+    question,
     advantage,
-    scene,
+    solution,
     partner
   },
   data() {
