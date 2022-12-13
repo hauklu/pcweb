@@ -1,12 +1,12 @@
 <template>
   <div class="home-advantage">
     <div
-      :style="`background-image: url(${banner});`"
+      :style="banner && `background-image: url(${banner});`"
       class="minibox"
     >
       <home-title>
         <template slot="title">产品优势</template>
-        <template slot="desc">超10000+企业选择我们，立即免费获取报价和方案</template>
+        <template slot="desc">六大核心优势，助力您的企业转化更多的订单</template>
       </home-title>
       <ul class="block">
         <li
@@ -39,29 +39,29 @@ export default {
   data() {
     return {
       list: [{
-        banner: require('@img/production/privateCall/advantage_1.png'),
-        title: '无需实名，办理方便',
-        desc: '无需个人办卡和个人实名，以企业资质申请和备案，我们提供号码'
+        banner: require('@img/production/scrm/advantage_1.png'),
+        title: '一键呼叫',
+        desc: '最新高频专用通话系统，可批量导入客户电话名单，用APP直接点击拨号呼出，无需手动输入号码，提高业务效率'
       }, {
-        banner: require('@img/production/privateCall/advantage_2.png'),
-        title: '全国码号，任你选择',
-        desc: '海量号码资源，200+城市本地号码，任你选择'
+        banner: require('@img/production/scrm/advantage_2.png'),
+        title: '通话稳定',
+        desc: '提供多种方案，可以有效提升线路的稳定性及接通率'
       }, {
-        banner: require('@img/production/privateCall/advantage_3.png'),
-        title: '多种方式，高效呼叫',
-        desc: '电脑端和APP端，两位一体，皆可一键呼叫，高效快捷'
+        banner: require('@img/production/scrm/advantage_3.png'),
+        title: '智能外显',
+        desc: '本地化外显，优先为用户匹配被叫所在地市外显号码'
       }, {
-        banner: require('@img/production/privateCall/advantage_4.png'),
-        title: '高频通话，不封坐席',
-        desc: '专业解决高频呼叫产生的封号问题'
+        banner: require('@img/production/scrm/advantage_4.png'),
+        title: '智能拦截',
+        desc: '帮助企业用户拦截敏感号码，降低投诉风险'
       }, {
-        banner: require('@img/production/privateCall/advantage_5.png'),
-        title: '通话稳定，沟通无畅',
-        desc: '基于三大运营商的基站信号，通话稳定'
+        banner: require('@img/production/scrm/advantage_5.png'),
+        title: '客户管理',
+        desc: '从咨询线索分发到销售数据转化追踪，再到最终成交全流程闭环管理，实现客户全生命周期管控，同时避免因销售人员离职而导致客户资源流失'
       }, {
-        banner: require('@img/production/privateCall/advantage_6.png'),
-        title: '智能预警，降低投诉',
-        desc: '通话关键词AI预警功能可帮您降低用户投诉'
+        banner: require('@img/production/scrm/advantage_6.png'),
+        title: '数据统计',
+        desc: '支持话务量、话务时间等各类型数据统计，帮助管理层实时了解业务动态，掌握行业风向，挖掘客户需求'
       }],
       banner: undefined
     }

@@ -1,9 +1,8 @@
 <template>
   <div class="solution">
     <banner />
-    工作手机
     <production />
-    <scheme />
+    <core />
     <advantage />
     <scene />
     <partner />
@@ -12,17 +11,17 @@
 
 <script>
 import banner from './banner'
-import production from '../home/production'
-import scheme from '../home/scheme.vue'
-import advantage from '../home/advantage'
-import scene from '../home/scene'
-import partner from '../home/partner'
+import production from './workMobile/production'
+import core from './workMobile/core'
+import advantage from './workMobile/advantage'
+import scene from '@/view/pcweb/components/home/scene'
+import partner from '@/view/pcweb/components/home/partner'
 import { toast, toastLoading } from '@/utils/toast'
 export default {
   components: {
     banner,
     production,
-    scheme,
+    core,
     advantage,
     scene,
     partner

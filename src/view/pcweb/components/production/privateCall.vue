@@ -1,7 +1,7 @@
 <template>
   <div class="solution">
     <banner />
-    <question />
+    <introduction />
     <advantage />
     <solution />
     <partner />
@@ -10,7 +10,7 @@
 
 <script>
 import banner from './callCard/banner.vue'
-import question from './callCard/question'
+import introduction from './privateCall/introduction.vue'
 import advantage from './privateCall/advantage.vue'
 import solution from '@/view/pcweb/components/production/callCard/solution'
 import partner from '@/view/pcweb/components/home/partner'
@@ -18,7 +18,7 @@ import { toast, toastLoading } from '@/utils/toast'
 export default {
   components: {
     banner,
-    question,
+    introduction,
     advantage,
     solution,
     partner
