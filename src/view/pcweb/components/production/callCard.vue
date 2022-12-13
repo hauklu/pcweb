@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import banner from './banner'
+import banner from './callCard/banner.vue'
 import production from '../home/production'
 import scheme from '../home/scheme.vue'
 import advantage from '../home/advantage'

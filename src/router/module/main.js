@@ -5,7 +5,7 @@ export default [
     component: () => import('@/view/pcweb/index'),
     children: [
       {
-        path: 'home',
+        path: '',
         name: 'home',
         meta: {
           title: '首页',

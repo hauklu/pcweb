@@ -1,11 +1,15 @@
 <template>
-  <div :class="isFixed && 'header__fixed'" class="top-nav">
+  <div
+    :class="isFixed && 'header__fixed'"
+    class="top-nav"
+  >
     <div class="minibox__wrap">
       <div class="minibox">
-        <pb-sticky class="minibox-sticky" @scroll="stickyScroll">
-          <header
-            class="header"
-          >
+        <pb-sticky
+          class="minibox-sticky"
+          @scroll="stickyScroll"
+        >
+          <header class="header">
             <img
               :src="logo"
               class="root-logo"
@@ -33,18 +37,34 @@
                     </el-dropdown-menu>
                   </el-dropdown> -->
 
-                  <span v-if="item.rootPath === '/production'" class="dropdown" @mouseenter="dropdownMouseenter" @mouseleave="dropdownMouseleave">
-                    <span class="dropdown-head" >
+                  <span
+                    v-if="item.rootPath === '/production'"
+                    class="dropdown"
+                    @mouseenter="dropdownMouseenter"
+                    @mouseleave="dropdownMouseleave"
+                  >
+                    <span class="dropdown-head">
                       <span class="tab-item-text">{{ item.name }}</span>
                       <i class="el-icon-arrow-down tab-item-icon" />
                     </span>
-                    <div :class="dropdownVisible && 'dropdown-menu__show'" class="dropdown-menu">
+                    <div
+                      :class="dropdownVisible && 'dropdown-menu__show'"
+                      class="dropdown-menu"
+                    >
                       <ul class="dropdown-menu-box">
-                        <li v-for="(ditem, didx) of dropdownList" :key="didx" class="dropdown-menu-box-item" @click.stop="clickDropdownItem(ditem, didx)">{{ ditem.name }}</li>
+                        <li
+                          v-for="(ditem, didx) of dropdownList"
+                          :key="didx"
+                          class="dropdown-menu-box-item"
+                          @click.stop="clickDropdownItem(ditem, didx)"
+                        >{{ ditem.name }}</li>
                       </ul>
                     </div>
                   </span>
-                  <span v-else class="tab-item-text">{{ item.name }}</span>
+                  <span
+                    v-else
+                    class="tab-item-text"
+                  >{{ item.name }}</span>
                 </li>
                 <div
                   ref="tabLine"
@@ -75,8 +95,8 @@ export default {
       logo: require('@img/home/logo.png'),
       // 导航列表
       list: [{
-        rootPath: '/home',
-        path: '/home',
+        rootPath: '/',
+        path: '/',
         name: '首页',
         style: ''
       }, {
@@ -286,7 +306,8 @@ export default {
           position: relative;
           display: inline-block;
           height: 100%;
-          .dropdown-head {}
+          .dropdown-head {
+          }
           .dropdown-menu {
             // position: absolute;
             // top: @navHeight;
@@ -300,7 +321,7 @@ export default {
               background-color: #fff;
               .dropdown-menu-box-item {
                 height: 45px;
-                line-height:45px;
+                line-height: 45px;
                 font-size: 13px;
                 color: #606266;
                 box-sizing: border-box;
@@ -325,7 +346,7 @@ export default {
 
           .tab-item-icon,
           .tab-item-text {
-              color: #368fff;
+            color: #368fff;
           }
         }
       }

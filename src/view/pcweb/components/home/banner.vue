@@ -1,14 +1,30 @@
 <template>
   <div class="home-banner">
     <div class="root-swiper">
-      <swiper :options="swiperOptions" class="banner-swiper">
-        <swiper-slide v-for="(item, idx) of swiperlist" :key="idx" class="banner-slide">
-          <div :style="`background-image: url(${item.banner});`" class="slide-bg">
+      <swiper
+        :options="swiperOptions"
+        class="banner-swiper"
+      >
+        <swiper-slide
+          v-for="(item, idx) of swiperlist"
+          :key="idx"
+          class="banner-slide"
+        >
+          <div
+            :style="`background-image: url(${item.banner});`"
+            class="slide-bg"
+          >
             <div class="slide-minibox">
               <h1>{{ item.name }}</h1>
               <ul>
-                <li v-for="(listItem, listIdx) of item.list" :key="listIdx">
-                  <img src="../../../../../static/img/home/banner-icon-1x.png" class="icon" >
+                <li
+                  v-for="(listItem, listIdx) of item.list"
+                  :key="listIdx"
+                >
+                  <img
+                    src="../../../../../static/img/home/banner-icon-1x.png"
+                    class="icon"
+                  >
                   <span>{{ listItem }}</span>
                 </li>
               </ul>
@@ -19,17 +35,29 @@
       </swiper>
       <div class="swiper-button-minibox">
         <div class="swiper-button-prev">
-          <img src="../../../../../static/img/home/icon9.png" class="arrow-left click hover" >
+          <img
+            src="../../../../../static/img/home/icon9.png"
+            class="arrow-left click hover"
+          >
         </div>
         <div class="swiper-button-next">
-          <img src="../../../../../static/img/home/icon8.png" class="arrow-right click hover" >
+          <img
+            src="../../../../../static/img/home/icon8.png"
+            class="arrow-right click hover"
+          >
         </div>
       </div>
       <div class="banner-bottom">
         <div class="banner-bottom-minibox">
           <ul>
-            <li v-for="(item, idx) of bottomList" :key="idx">
-              <img :src="item.icon" class="left" >
+            <li
+              v-for="(item, idx) of bottomList"
+              :key="idx"
+            >
+              <img
+                :src="item.icon"
+                class="left"
+              >
               <div class="right">
                 <span class="num">{{ item.num }}{{ item.numLabel }}</span>
                 <span class="desc">{{ item.desc }}</span>
@@ -125,8 +153,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import url(../../../public/assets/css/mixins.less);
-@import url(../../assets/css/variable.less);
+@import '~@/view/public/assets/css/mixins.less';
+@import '~@/view/pcweb/assets/css/variable.less';
 @height: 640px; // 组件高度
 
 .home-banner {
@@ -208,7 +236,7 @@ export default {
             font-weight: bold;
             margin-top: 68px;
           }
-       }
+        }
       }
     }
   }

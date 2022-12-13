@@ -58,7 +58,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import url(../../assets/css/variable.less);
+@import '~@/view/public/assets/css/mixins.less';
+@import '~@/view/pcweb/assets/css/variable.less';
 
 .home-scheme {
   position: relative;

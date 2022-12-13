@@ -56,8 +56,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import url(../../assets/css/variable.less);
-@import url(../../assets/css/publice.less);
+@import '~@/view/pcweb/assets/css/publice.less';
+@import '~@/view/pcweb/assets/css/variable.less';
 
 .home-partner {
   position: relative;

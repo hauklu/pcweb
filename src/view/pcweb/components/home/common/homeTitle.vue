@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import url(../../../assets/css/variable.less);
+@import '~@/view/pcweb/assets/css/variable.less';
 
 .home-title {
   position: relative;

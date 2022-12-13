@@ -56,7 +56,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import '~@/view/pcweb/assets/css/publice.less';
+@import '~@/view/public/assets/css/mixins.less';
 @import '~@/view/pcweb/assets/css/variable.less';
 
 .home-advantage {
