@@ -1,6 +1,9 @@
 <template>
   <div class="solution-banner">
-    <div :style="`background-image: url(${banner});`" class="banner-bg">
+    <div
+      :style="`background-image: url(${banner});`"
+      class="banner-bg"
+    >
       <div class="minibox" />
     </div>
   </div>
@@ -13,7 +16,6 @@ export default {
   },
   data() {
     return {
-      // banner: require('@img/solution/banner.png')
       banner: require('@img/home/banner2-1x.png')
     }
   },

@@ -1,28 +1,24 @@
 <template>
   <div class="solution">
     <banner />
-    解决方案
-    <production />
-    <scheme />
-    <advantage />
+    <solution />
     <scene />
+    <advantage />
     <partner />
   </div>
 </template>
 
 <script>
 import banner from '../components/solution/banner'
-import production from '../components/home/production'
-import scheme from '../components/home/scheme.vue'
-import advantage from '../components/home/advantage'
-import scene from '../components/home/scene'
-import partner from '../components/home/partner'
+import solution from '../components/solution/solution'
+import advantage from '../components/solution/advantage'
+import scene from '@/view/pcweb/components/home/scene'
+import partner from '@/view/pcweb/components/home/partner'
 import { toast, toastLoading } from '@/utils/toast'
 export default {
   components: {
     banner,
-    production,
-    scheme,
+    solution,
     advantage,
     scene,
     partner
